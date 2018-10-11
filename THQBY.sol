@@ -303,4 +303,4 @@ contract IRoleBidder is IInitializable
 	
 	
 	
-	
+	//all interface complete
