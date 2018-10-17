@@ -1,7 +1,7 @@
 pragma solidity ^0.4.25;
 
 
-contract THQBY is ITHQBYPlayerInterface, IDependencyInjection {
+contract Main is ITHQBYPlayerInterface, IDependencyInjection {
 	//fields from DependencyInjection
 	ITHQBY_PlayerManager  _playerManager;
 	IClock                _clock;
@@ -30,7 +30,23 @@ contract THQBY is ITHQBYPlayerInterface, IDependencyInjection {
 
 
 
-	function Main() {
+    /*
+     * Public functions
+     */
+     /// contract constructor
+	constructor () public {
+
+		//bid for 5 players (from previous test)
+
+		//bid process
+
+		//assign role
+		_players = _roleBider.CreateRoles();
+		IPlayerFactory factory = PlayerFactoryFactory();
+		_tHQBY_Settings = 
+
+
+
 
 
 
@@ -198,10 +214,7 @@ contract Clock
 	function  GetRealTimeInSeconds() public returns(uint)
 	{
 		return now;
-	}
-	
-	
-	
+	}	
 }
 
 
@@ -216,7 +229,6 @@ contract IInitializableIPlayerArr
 {
 	function Initialize(IPlayer[] memory) public;
 }
-
 
 
 contract ChatMessage
@@ -354,34 +366,11 @@ contract ITimeLimitForwardable is ITimeLimitable
 
 
 
-contract IVoteHistory
-{
-	function WhoDidThePlayerVote(IPlayer player) public  returns(IPlayer);
-}
 
 
 
 
 
-
-
-
-
-
-
-
-contract IBallot is IVoteHistory, IParticipatable
-{
-	function DidVote(IPlayer player) public  returns(bool);
-	function TryVote(IPlayer byWho, IPlayer toWho) public returns(bool);
-
-	function GetWinners() public returns(IPlayer[] memory);
-
-	function IsSoloWinder() public returns(bool);
-	function IsZeroWinders() public returns(bool);
-	function IsEveryVotableOnesVoted() public returns(bool);
-
-}
 
 
 
@@ -458,11 +447,11 @@ contract IChatable
 contract IChatLog is  IParticipatable, IChatable
 {
 	function GetAllMessages() public returns(ChatMessage[] memory);
-	function  GetNewestMessage() public returns(ChatMessage );
+	function GetNewestMessage() public returns(ChatMessage );
 
 
 
-	function  PrintSystemMessage(string memory message ) public ;
+	function PrintSystemMessage(string memory message ) public ;
 }
 
 
@@ -504,8 +493,7 @@ contract ChatLog is ParticipatableBase , IChatLog
 
 
 
-	function GetTimeAsSeconds() private returns(uint) 
-	{
+	function GetTimeAsSeconds() private returns(uint) {
 		return _clock.GetRealTimeInSeconds();
 	}
 
@@ -547,14 +535,6 @@ contract ChatLog is ParticipatableBase , IChatLog
 
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -610,15 +590,13 @@ contract IPlayerManager is IInitializableIPlayerArr
 
 contract IRoleBidder is IInitializable
 {
-
-
 	function Bid(uint playerID, string memory role, uint bidAmount) public ;
-	function  HasEveryoneBid() public returns(bool);
-	function  SetPlayersCount(uint playersCount) public ;
+	function HasEveryoneBid() public returns(bool);
+	function SetPlayersCount(uint playersCount) public;
 
 
 	function CreateRoles() public returns(IPlayer[] memory);
-	function  GetIsActive() public returns(bool);
+	function GetIsActive() public returns(bool);
 }
 
 
