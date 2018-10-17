@@ -3,39 +3,42 @@ pragma solidity ^0.4.25;
 
 contract THQBY is ITHQBYPlayerInterface, IDependencyInjection {
 	//fields from DependencyInjection
-	ITHQBY_PlayerManager _playerManager;
-	IClock _clock;
-	SceneNIGHT_KILLER _sceneNIGHT_KILLER;
-	SceneNIGHT_POLICE _nIGHT_POLICE;
-	IPlayerFactory _playerfact;
-	IRoleBidder _roleBidder;
-	SceneDAY _sceneDAY;
-	SceneDAY_PK _sceneDAY_PK;
-	ISceneManager _sceneManager;
-	ITHQBY_Settings _tHQBY_Settings;
+	ITHQBY_PlayerManager  _playerManager;
+	IClock                _clock;
+	SceneNIGHT_KILLER     _sceneNIGHT_KILLER;
+	SceneNIGHT_POLICE     _nIGHT_POLICE;
+	IPlayerFactory        _playerfact;
+	IRoleBidder           _roleBidder;
+	SceneDAY              _sceneDAY;
+	SceneDAY_PK           _sceneDAY_PK;
+	ISceneManager         _sceneManager;
+	ITHQBY_Settings       _tHQBY_Settings;
 
 
 	//fields from THQBYPlayerInterface
-	THQBY_PLayer _PLayer;
-	uint _id;
-	ITHQBY_Settings _settings;
-	ChatLog _log;
-	IBallot _ballot;
-	THQBYRoleBidder _roleBider;
+	THQBY_PLayer          _PLayer;
+	uint                  _id;
+	ITHQBY_Settings       _settings;
+	ChatLog               _log;
+	IBallot               _ballot;
+	THQBYRoleBidder       _roleBider;
 
 	//For game play
 	IPlayer[] _players;
 
+	//Feasible structure
 
 
-	function Players() 
-		public 
-		returns(IPlayer[] _players)
-	{
-		return this._PLayers;
+
+	function Main() {
+
+
+
 	}
 
-	function 
+	function Players() public returns(IPlayer[] _players) {
+		return this._PLayers;
+	}
 
 
 
